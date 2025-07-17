@@ -1,0 +1,1366 @@
+/* ========================================
+   HYLA Stuttgart - Combined Stylesheet
+   ======================================== */
+
+/* ========================================
+   0. Local Font Definitions
+   ======================================== */
+
+/* Montserrat Font Family */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('./fonts/montserrat-v30-latin-300.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./fonts/montserrat-v30-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('./fonts/montserrat-v30-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('./fonts/montserrat-v30-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('./fonts/montserrat-v30-latin-800.woff2') format('woff2');
+}
+
+/* Playfair Display Font Family */
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./fonts/playfair-display-v39-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('./fonts/playfair-display-v39-latin-700.woff2') format('woff2');
+}
+
+/* Gravitas One Font Family */
+@font-face {
+    font-family: 'Gravitas One';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('./fonts/gravitas-one-v20-latin-regular.woff2') format('woff2');
+}
+
+/* ========================================
+   1. CSS Variables & Reset
+   ======================================== */
+:root {
+    /* Farben */
+    --color-primary-pink: #ffeef5;
+    --color-light-beige: #f9f7e5;
+    --color-soft-blue: #eaf4f4;
+    --color-soft-purple: #fceff9;
+    --color-white: #ffffff;
+    --color-black: #1a1a1a;
+    --color-text: #4a4a4a;
+    --color-text-light: #6a6a6a;
+    --color-accent: #d4a574;
+    --color-accent-dark: #b8935f;
+
+    /* Schriften */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    /* Abstände */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+    --spacing-xxl: 6rem;
+
+    /* Container */
+    --max-width: 1200px;
+
+    /* Transitions */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-text);
+    background-color: var(--color-white);
+    overflow-x: hidden;
+}
+
+/* ========================================
+   2. Typography
+   ======================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--color-black);
+    margin-bottom: var(--spacing-md);
+}
+
+h1 {
+    font-size: clamp(2.5rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--spacing-lg);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--color-accent-dark);
+}
+
+ul {
+    list-style: none;
+}
+
+/* ========================================
+   3. Layout Components
+   ======================================== */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.section {
+    padding: var(--spacing-xxl) 0;
+    position: relative;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.two-column.reverse {
+    direction: rtl;
+}
+
+.two-column.reverse > * {
+    direction: ltr;
+}
+
+/* ========================================
+   4. Navigation
+   ======================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+nav {
+    padding: var(--spacing-sm) 0;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-black);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-lg);
+}
+
+.nav-menu a {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-text);
+    padding: var(--spacing-xs) 0;
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-black);
+    margin: 5px 0;
+    transition: var(--transition);
+}
+
+/* ========================================
+   5. Buttons
+   ======================================== */
+.button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 50px;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    text-align: center;
+}
+
+.button-primary {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+}
+
+.button-primary:hover {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+}
+
+.button-outline {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+}
+
+.button-outline:hover {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+}
+
+.button-group {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+/* ========================================
+   6. Hero Section
+   ======================================== */
+#hero {
+    background-color: var(--color-primary-pink);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.hero-content h1 {
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    max-width: 650px;
+    width: 150%;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ========================================
+   7. About Section
+   ======================================== */
+#about {
+    background-color: var(--color-soft-blue);
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
+}
+
+.about-image img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    max-width: 650px;
+    width: 150%;
+}
+
+.about-content h2 {
+    margin-bottom: var(--spacing-md);
+}
+
+.about-content p {
+    margin-bottom: var(--spacing-sm);
+}
+
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-md);
+    font-weight: 500;
+    color: var(--color-accent);
+}
+
+/* ========================================
+   8. Features Section
+   ======================================== */
+#features {
+    background-color: var(--color-light-beige);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.feature-card {
+    background-color: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: 20px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto var(--spacing-md);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.feature-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ========================================
+   9. Story Sections
+   ======================================== */
+.story-section {
+    padding: var(--spacing-xxl) 0;
+}
+
+.story-section:nth-child(odd) {
+    background-color: var(--color-soft-blue);
+}
+
+.story-section:nth-child(even) {
+    background-color: var(--color-soft-purple);
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.story-text h3 {
+    margin-bottom: var(--spacing-md);
+}
+
+.story-image {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.story-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.story-image:hover img {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   10. Benefits Section
+   ======================================== */
+#benefits {
+    background-color: var(--color-soft-purple);
+}
+
+.benefits-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxl);
+}
+
+.benefits-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.benefits-row.reverse {
+    direction: rtl;
+}
+
+.benefits-row.reverse > * {
+    direction: ltr;
+}
+
+.benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.benefit-item {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: var(--spacing-md);
+    border-radius: 15px;
+    transition: var(--transition);
+}
+
+.benefit-item:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateX(10px);
+}
+
+.benefit-item h3 {
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.benefit-item h3::before {
+    content: '✓';
+    font-size: 1.5rem;
+    color: var(--color-accent);
+}
+
+.benefit-item p {
+    padding-left: calc(1.5rem + var(--spacing-xs));
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.benefits-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.benefits-image img {
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+/* ========================================
+   11. Transformation Section
+   ======================================== */
+#transformation {
+    background-color: var(--color-white);
+}
+
+/* Fixed image sizing for transformation section */
+#transformation .partner-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#transformation .partner-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   12. Quiz Section
+   ======================================== */
+#quiz {
+    background-color: var(--color-light-beige);
+    text-align: center;
+}
+
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quiz-iframe-wrapper {
+    position: relative;
+    padding-top: 56.25%;
+    margin-top: var(--spacing-lg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.quiz-fallback {
+    background-color: var(--color-primary-pink);
+    padding: var(--spacing-md);
+    border-radius: 15px;
+    margin-top: var(--spacing-md);
+}
+
+/* ========================================
+   13. FAQ Section
+   ======================================== */
+#faq {
+    background-color: var(--color-soft-blue);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-question {
+    padding: var(--spacing-md);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.faq-question:hover {
+    background-color: var(--color-primary-pink);
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: var(--transition);
+}
+
+.faq-item.active .faq-question::after {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0 var(--spacing-md);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+    max-height: 500px;
+}
+
+/* ========================================
+   14. Partner Section
+   ======================================== */
+#partner {
+    background-color: var(--color-white);
+}
+
+.partner-grid {
+    display: grid;
+    gap: var(--spacing-xxl);
+}
+
+.partner-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.partner-intro-content h2 {
+    margin-bottom: var(--spacing-md);
+}
+
+.partner-intro-image {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.partner-intro-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.partner-team {
+    margin-top: var(--spacing-xxl);
+    padding-top: var(--spacing-xxl);
+    border-top: 2px solid var(--color-soft-blue);
+}
+
+.partner-team-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.partner-team-layout.reverse {
+    direction: rtl;
+}
+
+.partner-team-layout.reverse > * {
+    direction: ltr;
+}
+
+.partner-benefits {
+    list-style: none;
+    margin: var(--spacing-md) 0;
+}
+
+.partner-benefits li {
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.partner-benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.partner-team-image {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.partner-team-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+}
+
+/* ========================================
+   15. Contact Section
+   ======================================== */
+#contact {
+    background-color: var(--color-primary-pink);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--color-black);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #f0f0f0;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: #fafafa;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    background-color: var(--color-white);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-top: 0.3rem;
+}
+
+.checkbox-group label {
+    font-size: 0.9rem;
+}
+
+.contact-info {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+}
+
+.contact-info p {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* ========================================
+   16. Fazit Section
+   ======================================== */
+.fazit-section {
+    background-color: var(--color-soft-blue);
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.fazit-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.fazit-container h2 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-accent);
+}
+
+.fazit-container p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--color-text);
+}
+
+.fazit-button {
+    margin-top: var(--spacing-lg);
+}
+
+/* ========================================
+   17. Footer
+   ======================================== */
+footer {
+    background: linear-gradient(135deg, var(--color-black) 0%, #2a2a2a 100%);
+    color: var(--color-white);
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+}
+
+.footer-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.footer-info {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-info p {
+    margin-bottom: var(--spacing-xs);
+}
+
+footer p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-address {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-top: var(--spacing-sm);
+}
+
+/* ========================================
+   18. WhatsApp Button
+   ======================================== */
+.whatsapp-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+    z-index: 999;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-button svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+
+/* ========================================
+   19. IMDA Page Specific Styles
+   ======================================== */
+
+/* Header for IMDA page */
+.header-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-text);
+    padding: var(--spacing-xs) 0;
+    position: relative;
+}
+
+.back-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.back-link:hover::after {
+    width: 100%;
+}
+
+/* Table of Contents */
+.toc-section {
+    background-color: var(--color-primary-pink);
+    padding: var(--spacing-xxl) 0;
+}
+
+.toc-container {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    padding: var(--spacing-xl);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.toc-container h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.toc-column h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-accent);
+}
+
+.toc-list li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.toc-list a {
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-xs) 0;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.toc-list a:hover {
+    color: var(--color-accent);
+    transform: translateX(5px);
+}
+
+.toc-list a::before {
+    content: '→';
+    margin-right: var(--spacing-xs);
+    color: var(--color-accent);
+}
+
+/* Content Sections */
+.content-section {
+    padding: var(--spacing-xxl) 0;
+}
+
+.content-section:nth-child(odd) {
+    background-color: var(--color-white);
+}
+
+.content-section:nth-child(even) {
+    background-color: var(--color-light-beige);
+}
+
+.content-box {
+    background-color: var(--color-white);
+    border-radius: 20px;
+    padding: var(--spacing-xl);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: var(--spacing-lg);
+}
+
+.content-section h2 {
+    position: relative;
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.content-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+}
+
+.content-section h3 {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.content-section h4 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-black);
+}
+
+.content-section ul {
+    margin: var(--spacing-sm) 0 var(--spacing-md) var(--spacing-md);
+}
+
+.content-section ul li {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Info Boxes */
+.info-box {
+    background-color: var(--color-soft-blue);
+    padding: var(--spacing-md);
+    border-radius: 15px;
+    margin: var(--spacing-md) 0;
+    border-left: 4px solid var(--color-accent);
+}
+
+.info-box.success {
+    background-color: var(--color-soft-purple);
+    border-left-color: #9c27b0;
+}
+
+.info-box strong {
+    color: var(--color-black);
+}
+
+/* Contact Card */
+.contact-card {
+    background-color: var(--color-primary-pink);
+    border-radius: 20px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card h4 {
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Rights List */
+.rights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.rights-card {
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: 15px;
+    border-left: 4px solid var(--color-accent);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.rights-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.rights-card strong {
+    display: block;
+    color: var(--color-black);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+/* ========================================
+   20. Responsive Design
+   ======================================== */
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background-color: var(--color-white);
+        flex-direction: column;
+        padding: var(--spacing-lg) var(--spacing-md);
+        transition: var(--transition);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    /* Grid Layouts */
+    .two-column,
+    .story-content,
+    .partner-intro,
+    .partner-team-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .two-column.reverse,
+    .partner-team-layout.reverse {
+        direction: ltr;
+    }
+
+    /* Hero */
+    #hero {
+        min-height: auto;
+        padding: var(--spacing-xl) 0;
+    }
+
+    /* About */
+    .about-image img {
+        width: 300px;
+        height: 300px;
+    }
+
+    /* Features */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Benefits */
+    .benefits-row {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-row.reverse {
+        direction: ltr;
+    }
+
+    .benefits-image {
+        margin: var(--spacing-md) 0;
+    }
+
+    /* Buttons */
+    .button-group {
+        justify-content: center;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    /* Spacing */
+    .section {
+        padding: var(--spacing-xl) 0;
+    }
+
+    /* Images */
+    #transformation .partner-image img,
+    .partner-intro-image,
+    .partner-team-image {
+        max-width: 100%;
+    }
+
+    /* IMDA specific */
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .toc-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .rights-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-box {
+        padding: var(--spacing-md);
+    }
+}
+
+/* ========================================
+   21. Animations
+   ======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* ========================================
+   22. Print Styles
+   ======================================== */
+@media print {
+    header, .toc-section, footer {
+        display: none;
+    }
+
+    .content-section {
+        page-break-inside: avoid;
+    }
+
+    .container {
+        margin-top: 0;
+    }
+}
